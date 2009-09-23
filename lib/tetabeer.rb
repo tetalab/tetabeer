@@ -1,9 +1,9 @@
 require 'rubygems'
 require 'dm-core'
 
-require 'lib/reader'
-require 'lib/tag'
-require 'lib/tags/beer'
+require 'tetabeer/reader'
+require 'tetabeer/tag'
+require 'tetabeer/tags/beer'
 
 DataMapper.setup(:default, "sqlite3:///#{Dir.pwd}/test.db")
 
