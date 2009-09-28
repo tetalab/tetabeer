@@ -1,4 +1,4 @@
-class RfidReader
+class TetaLab::Rfid::Reader
   
   def initialize(device)
      @device = device
@@ -8,7 +8,7 @@ class RfidReader
     f = File.open(@device, 'r')
     
     while true
-        if payload = read_tag
+        if payload = Reader.read_tag
           tag = RfidTag.identify(payload)
           if tag.on_reader
             tag.execute

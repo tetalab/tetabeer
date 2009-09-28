@@ -1,9 +1,20 @@
-class RfidTag
+class TetaLab::Rfid::BeerTag
   include DataMapper::Resource
   
   property :tag_id, String, :key => true
   property :on_reader, Boolean, :default => false
+  property :credits, Integer, :default => 0
+  property :nb_beers, Integer, :default => 0
   
+  def has_credit?
+    self.remaining_credits > 0
+  end
+  
+  def remaining_credits
+    self.credits - self.nb_beers
+  end
+  
+  # === stdlib for rfid
   def self.identify(payload)
     
     # Check if tag exists in DB
